@@ -72,13 +72,22 @@
     rel="stylesheet"
   />
   
-  <script
-    defer
-    src="{% static 'https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js' %}"
-  ></script>
+  
+  <script defer src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script>
 
-  <script defer src="{% static 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js' %}"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+  
   
 </head>
 
@@ -127,11 +136,10 @@
         
         <li class="group pl-6">
           
-          <span
-            @click="triggerNavItem('#services')"
+          <a
+            href="#services"
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-            >Services</span
-          >
+          >Services</a>
           
           <span
             class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"
@@ -140,11 +148,10 @@
         
         <li class="group pl-6">
           
-          <span
-            @click="triggerNavItem('#portfolio')"
+          <a
+            href="#portfolio"
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-            >Portfolio</span
-          >
+          >Portfolio</a>
           
           <span
             class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"
@@ -153,11 +160,10 @@
         
         <li class="group pl-6">
           
-          <span
-            @click="triggerNavItem('#clients')"
+          <a
+            href="#clients"
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-            >Clients</span
-          >
+          >Clients</a>
           
           <span
             class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"
@@ -166,11 +172,10 @@
         
         <li class="group pl-6">
           
-          <span
-            @click="triggerNavItem('#work')"
+          <a
+            href="#work"
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-            >Work</span
-          >
+          >Work</a>
           
           <span
             class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"
@@ -179,11 +184,10 @@
         
         <li class="group pl-6">
           
-          <span
-            @click="triggerNavItem('#statistics')"
+          <a
+            href="#statistics"
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-            >Statistics</span
-          >
+          >Statistics</a>
           
           <span
             class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"
@@ -192,11 +196,10 @@
         
         <li class="group pl-6">
           
-          <span
-            @click="triggerNavItem('#blog')"
+          <a
+            href="#blog"
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-            >Blog</span
-          >
+          >Blog</a>
           
           <span
             class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"
@@ -244,70 +247,11 @@
       
       <li class="py-2">
         
-        <span
-          href="about"
+        <a
+          href="#about"
+          @click="mobileMenu = false"
           class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >About</span
-        >
-        
-      </li>
-      
-      <li class="py-2">
-        
-        <span
-          @click="triggerMobileNavItem('#services')"
-          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >Services</span
-        >
-        
-      </li>
-      
-      <li class="py-2">
-        
-        <span
-          @click="triggerMobileNavItem('#portfolio')"
-          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >Portfolio</span
-        >
-        
-      </li>
-      
-      <li class="py-2">
-        
-        <span
-          @click="triggerMobileNavItem('#clients')"
-          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >Clients</span
-        >
-        
-      </li>
-      
-      <li class="py-2">
-        
-        <span
-          @click="triggerMobileNavItem('#work')"
-          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >Work</span
-        >
-        
-      </li>
-      
-      <li class="py-2">
-        
-        <span
-          @click="triggerMobileNavItem('#statistics')"
-          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >Statistics</span
-        >
-        
-      </li>
-      
-      <li class="py-2">
-        
-        <span
-          @click="triggerMobileNavItem('#blog')"
-          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-          >Blog</span
+          >About</a
         >
         
       </li>
@@ -315,7 +259,74 @@
       <li class="py-2">
         
         <a
-          href="#contact"
+          href="#services"
+          @click="mobileMenu = false"
+          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+          >Services</a
+        >
+        
+      </li>
+      
+      <li class="py-2">
+        
+        <a
+          href="#Portfolio"
+          @click="mobileMenu = false"
+          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+          >Portfolio</a
+        >
+        
+      </li>
+      
+      <li class="py-2">
+        
+        <a
+          href="#Clients"
+          @click="mobileMenu = false"
+          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+          >Clients</a
+        >
+        
+      </li>
+      
+      <li class="py-2">
+        
+        <a
+          href="#Work"
+          @click="mobileMenu = false"
+          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+          >Work</a
+        >
+        
+      </li>
+      
+      <li class="py-2">
+        
+        <a
+          href="#Statistics"
+          @click="mobileMenu = false"
+          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+          >Statistics</a
+        >
+        
+      </li>
+      
+      <li class="py-2">
+        
+        <a
+          href="#Statistics"
+          @click="mobileMenu = false"
+          class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+          >Statistics</a
+        >
+        
+      </li>
+      
+      <li class="py-2">
+        
+        <a
+          href="#Contact"
+          @click="mobileMenu = false"
           class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
           >Contact</a
         >
