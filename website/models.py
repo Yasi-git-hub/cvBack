@@ -9,4 +9,7 @@ class contact(models.Model):
     created_date=models.TimeField(auto_now_add=True)
     updated_date=models.TimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 
