@@ -1074,6 +1074,9 @@
     <div
       class="mx-auto grid w-full grid-cols-1 gap-6 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-3 xl:gap-10"
     >
+    
+      {% for post in posts %}
+  
       <a href="/post" class="shadow">
         <div
           style="background-image: url(/assets/img/post-01.png)"
@@ -1089,15 +1092,15 @@
         </div>
         <div class="bg-white py-6 px-5 xl:py-8">
           <span class="block font-body text-lg font-semibold text-black"
-            >{{title1}}</span
+            >{{post.title}}</span
           >
           <span class="block pt-2 font-body text-grey-20"
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.</span
+            >{{post.content}}</span
           >
         </div>
       </a>
-      <a href="/post" class="shadow">
+      
+      <!-- <a href="/post" class="shadow">
         <div
           style="background-image: url(/assets/img/post-02.png)"
           class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72"
@@ -1142,7 +1145,8 @@
             eiusmod tempor incididunt ut labore et dolore magna aliqua.</span
           >
         </div>
-      </a>
+      </a> -->
+      {% endfor %}
     </div>
   </div>
 </div>

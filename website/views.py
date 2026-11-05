@@ -1,11 +1,26 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
+from post.models import Post
+from django.utils import timezone
+
+
 def index_view(request):
-    context={'title1':'how to become a backend developer'}
-    return render(request,'index.html', context)
-# Create your views here.
+    posts = Post.objects.filter(
+    status=1,
+    published_date__lte=timezone.localtime().time())
+
+    context = {
+        'title1': 'how to become a backend developer',
+        'posts': posts}
+
+    return render(request, 'index.html', context)
+
+
 def about_view(request):
-    return render(request,'about.html')
+    return render(request, 'about.html')
+
 
 def contacts_view(request):
-    return render(request,'contacts.html')
+    return render(request, 'contacts.html')
+
