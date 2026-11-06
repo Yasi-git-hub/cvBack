@@ -20,12 +20,12 @@
 
   <link
     rel="canonical"
-    href="{{ request.scheme }}://{{ request.get_host }}{% url 'post:detail' %}"
+    href="{{ request.scheme }}://{{ request.get_host }}{% url 'post:detail' posts.id %}"
   />
 
   <meta
     property="og:url"
-    content="{{ request.scheme }}://{{ request.get_host }}{% url 'post:detail' %}"
+    content="{{ request.scheme }}://{{ request.get_host }}{% url 'post:detail' posts.id %}"
   />
 
   <meta
@@ -357,7 +357,7 @@
       <h1
         class="pt-5 font-body text-3xl font-semibold text-primary sm:text-4xl md:text-5xl xl:text-6xl"
       >
-        How to become a frontend developer
+        {{posts.title}}
       </h1>
       <div class="flex items-center pt-5 md:pt-10">
         <div>
@@ -369,7 +369,7 @@
         </div>
         <div class="pl-5">
           <span class="block font-body text-xl font-bold text-grey-10"
-            >By Christy Smith</span
+            >{{posts.author}}</span
           >
           <span class="block pt-1 font-body text-xl font-bold text-grey-30"
             >February 27, 2022</span
@@ -377,7 +377,7 @@
         </div>
       </div>
     </div>
-    <div class="prose max-w-none pt-8"><h2 id="lorem-ipsum-dolor-sit-amet">Lorem ipsum dolor sit amet</h2>
+    <div class="prose max-w-none pt-8"><h2 id="lorem-ipsum-dolor-sit-amet">{{posts.content}}</h2>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
@@ -486,6 +486,7 @@
   </div>
 </div>
 </div>
+
 
       <div class="bg-primary">
   <div class="container flex flex-col justify-between py-6 sm:flex-row">

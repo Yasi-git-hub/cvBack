@@ -6,9 +6,7 @@ from django.utils import timezone
 
 
 def index_view(request):
-    posts = Post.objects.filter(
-    status=1,
-    published_date__lte=timezone.localtime().time())
+    posts = Post.objects.filter(status=1)
 
     context = {
         'title1': 'how to become a backend developer',

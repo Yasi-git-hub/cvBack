@@ -1,4 +1,4 @@
-
+from django.urls import path, include
 from django.urls import path
 from . import views
 
@@ -6,5 +6,5 @@ app_name = "post"
 
 urlpatterns = [
     # path("", views.post_view, name="detail"),
-    path('post-<int:pid>',views.post_view, name='post' )
+    path('<int:pid>/', views.post_view, name='detail' )
 ]
