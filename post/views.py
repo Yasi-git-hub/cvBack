@@ -5,7 +5,28 @@ from django.utils import timezone
 
 
 def post_view(request,pid): 
-    posts = get_object_or_404(Post,id=pid)
-    context={'posts':posts}
-    return render(request, "post.html", context)
+    # posts = get_object_or_404(Post,id=pid)
+    # context={'posts':posts}
+    # return render(request, "post.html", context)
+    posts = list(Post.objects.all().order_by('id'))
 
+    current_post = get_object_or_404(Post, id=pid)
+
+    current_index = posts.index(current_post)
+
+    previous_post = None
+    next_post = None
+
+    if current_index > 0:
+        previous_post = posts[current_index - 1]
+
+    if current_index < len(posts) - 1:
+        next_post = posts[current_index + 1]
+
+    context = {
+        'posts': current_post,
+        'previous_post': previous_post,
+        'next_post': next_post,
+    }
+
+    return render(request, 'post.html', context)
