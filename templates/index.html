@@ -1079,7 +1079,7 @@
   
       <a href="{% url 'post:detail' post.id %}" class="shadow">
         <div
-          style="background-image: url(/assets/img/post-01.png)"
+          style="background-image: url('{{ post.image.url }}')"
           class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72"
         >
           <span
