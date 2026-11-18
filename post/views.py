@@ -30,3 +30,10 @@ def post_view(request,pid):
     }
 
     return render(request, 'post.html', context)
+
+
+def post_category(request, cat_name):
+    posts=Post.objects.filter(status=1)
+    posts=posts.filter(category__name=cat_name)
+    context={'posts':posts}
+    return render(request, 'post/post_list.html', context)

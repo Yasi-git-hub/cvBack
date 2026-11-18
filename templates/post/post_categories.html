@@ -1,0 +1,13 @@
+<div class="flex flex-wrap justify-center gap-5 border-t border-lila py-8">
+
+    {% for cat,count in categories.items %}
+
+        <span class="rounded-xl bg-primary px-4 py-2 font-body font-bold text-white hover:bg-grey-20">
+
+            {{ cat.name }} ({{ count }})
+
+        </span>
+
+    {% endfor %}
+
+</div>
