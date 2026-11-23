@@ -1,6 +1,7 @@
 {% load static %}
 {% load post_tags %}
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1174,35 +1175,48 @@
       accumsan.
     </p>
   </div>
-  <form class="mx-auto w-full pt-10 sm:w-3/4">
+  <form action="{% url 'contact' %}" method="post" class="mx-auto w-full pt-10 sm:w-3/4">
+    {% csrf_token %}
+    
     <div class="flex flex-col md:flex-row">
       <input
         class="mr-3 w-full rounded border-grey-50 px-4 py-3 font-body text-black md:w-1/2 lg:mr-5"
         placeholder="Name"
         type="text"
         id="name"
+        name="name"
       />
       <input
         class="mt-6 w-full rounded border-grey-50 px-4 py-3 font-body text-black md:mt-0 md:ml-3 md:w-1/2 lg:ml-5"
         placeholder="Email"
         type="text"
         id="email"
+        name="email"
       />
     </div>
     <textarea
       class="mt-6 w-full rounded border-grey-50 px-4 py-3 font-body text-black md:mt-8"
       placeholder="Message"
       id="message"
+      name="message"
       cols="30"
       rows="10"
     ></textarea>
     <button
+      type="submit"
       class="mt-6 flex items-center justify-center rounded bg-primary px-8 py-3 font-header text-lg font-bold uppercase text-white hover:bg-grey-20"
     >
       Send
       <i class="bx bx-chevron-right relative -right-2 text-3xl"></i>
     </button>
   </form>
+  {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert("{{ message|escapejs }}");
+        </script>
+    {% endfor %}
+  {% endif %}
   <div class="flex flex-col pt-16 lg:flex-row">
     <div
       class="w-full border-l-2 border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8 lg:w-1/3"

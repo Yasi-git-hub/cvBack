@@ -1,8 +1,11 @@
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from post.models import Post
 from django.utils import timezone
+from website.models import contact
+from website.forms import ContactForm
+from django.contrib import messages
 
 
 def index_view(request):
@@ -20,5 +23,13 @@ def about_view(request):
 
 
 def contacts_view(request):
-    return render(request, 'contacts.html')
+    if request.method =='POST':
+        form=ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your message was sent successfully!')
+        return redirect('/')
 
+    return redirect('/')
+
+# render(request,'index.html',{'form':form})
